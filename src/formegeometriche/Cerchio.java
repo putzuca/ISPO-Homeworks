@@ -1,13 +1,13 @@
 package formegeometriche;
 
 public class Cerchio implements Forma {
-	private int raggio;
 	private Punto centro;
+	private int raggio;
 	private String colore;
 	
 	public Cerchio(Punto centro, int raggio, String colore) {
-		this.raggio = raggio;
 		this.centro = new Punto(centro.getX(), centro.getY());
+		this.raggio = raggio;
 		this.colore = colore;
 	}
 	
