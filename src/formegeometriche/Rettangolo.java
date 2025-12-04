@@ -1,17 +1,23 @@
 package formegeometriche;
 
 public class Rettangolo implements Forma {
-	private int altezza, larghezza;
 	private Punto vertice;
+	private int larghezza, altezza;
 	private String colore;
 	
-	public Rettangolo(Punto vertice, int altezza, int larghezza, String colore) {
-		this.altezza = altezza;
-		this.larghezza = larghezza;
-		this.colore = colore;
+	public Rettangolo(Punto vertice, int larghezza, int altezza, String colore) {
 		this.vertice = new Punto(vertice.getX(), vertice.getY());
+		this.larghezza = larghezza;
+		this.altezza = altezza;
+		this.colore = colore;
 	}
 	
+	
+	public Punto getVertice() {
+		return this.vertice;
+	}
+
+
 	@Override
 	public void trasla(int x, int y) {
 		this.vertice.setX(this.vertice.getX()+x);
@@ -21,8 +27,8 @@ public class Rettangolo implements Forma {
 	@Override
 	public String toString() {
 		return "rettangolo: vertice=("+this.vertice.getX()+","+this.vertice.getY()
-		+"), altezza="+this.altezza
 		+", larghezza="+this.larghezza
+		+"), altezza="+this.altezza
 		+", colore="+this.colore;
 	}
 
