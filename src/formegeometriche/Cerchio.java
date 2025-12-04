@@ -11,6 +11,10 @@ public class Cerchio implements Forma {
 		this.colore = colore;
 	}
 	
+	public Punto getCentro() {
+		return this.centro;
+	}
+
 	@Override
 	public void trasla(int x, int y) {
 		this.centro.setX(this.centro.getX() + x);

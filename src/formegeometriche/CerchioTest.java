@@ -21,9 +21,11 @@ public class CerchioTest {
 	
 	@Test
 	public void testTrasla() {
+
 		this.c1.trasla(3, 2);
-		assertEquals(2,this.c1.centro.getX());
-		assertEquals(-1,this.c1.centro.getY());
+		
+		assertEquals(2,c1.getCentro().getX());
+		assertEquals(-1,c1.getCentro().getY());
 	}
 
 }
