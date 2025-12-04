@@ -7,16 +7,18 @@ import org.junit.Test;
 public class CerchioTest {
 	
 	private Cerchio c1;
-	private Punto centro;
-	private int r;
-	private String colore;
 	
 	@Before
 	public void setUp() {
-		this.centro=new Punto(-1, -3);
-		this.r=4;
-		this.colore="blu";
-		this.c1=new Cerchio(centro, r, colore);
+		
+		Punto centro;
+		int r;
+		String colore;
+		
+		centro=new Punto(-1, -3);
+		r=4;
+		colore="blu";
+		c1=new Cerchio(centro, r, colore);
 	}
 	
 	@Test

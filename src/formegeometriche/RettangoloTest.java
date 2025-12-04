@@ -6,16 +6,18 @@ import org.junit.Test;
 
 public class RettangoloTest {
 	private Rettangolo r1;
-	private Punto vertice;
-	private int l, a;
-	private String colore;
 	
 	@Before
 	public void setUp() {
-		this.vertice=new Punto(1, 1);
-		this.l=5;
-		this.a=7;
-		this.colore="rosso";
+		
+		Punto vertice;
+		int l, a;
+		String colore;
+		
+		vertice=new Punto(1, 1);
+		l=5;
+		a=7;
+		colore="rosso";
 		this.r1=new Rettangolo(vertice, l, a, colore);
 	}
 	
