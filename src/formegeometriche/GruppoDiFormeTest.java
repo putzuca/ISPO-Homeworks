@@ -71,33 +71,37 @@ public class GruppoDiFormeTest {
 		
 		assertEquals(1, this.r1.getVertice().getX());	// ASSERT: verifica lo stato iniziale
 		assertEquals(1, this.r1.getVertice().getY());	//		   del gruppo di gruppi	  
-		assertEquals(-1, this.c1.getCentro().getX());	
-		assertEquals(-3, this.c1.getCentro().getY());		
-		assertEquals(-1, this.c2.getCentro().getX());	
-		assertEquals(2, this.c2.getCentro().getY());	
+		assertEquals(-1, this.c1.getCentro().getX());
+		assertEquals(-3, this.c1.getCentro().getY());
+		assertEquals(-1, this.c2.getCentro().getX());
+		assertEquals(2, this.c2.getCentro().getY());
 		
 		this.g2.trasla(3, 2);							// ACT: trasla il gruppo di gruppi di (3, 2)
 		
 		assertEquals(4, this.r1.getVertice().getX());	// ASSERT: verifica che il gruppo semplice e il cerchio
 		assertEquals(3, this.r1.getVertice().getY());	//		   contenuti nel gruppo siano stati traslati
-		assertEquals(2, this.c1.getCentro().getX());	
-		assertEquals(-1, this.c1.getCentro().getY());	
-		assertEquals(2, this.c2.getCentro().getX());	
-		assertEquals(4, this.c2.getCentro().getY());	
+		assertEquals(2, this.c1.getCentro().getX());
+		assertEquals(-1, this.c1.getCentro().getY());
+		assertEquals(2, this.c2.getCentro().getX());
+		assertEquals(4, this.c2.getCentro().getY());
 
 	}
 	
 	/* Verifica che il costruttore lanci l'eccezione se il numero di forme è > 10 */
 	@Test
-	public void testCostruttorePiuDiDieciForme() {
+	public void testCostruttore_PiuDiDieciForme() {
 		
 		try {
 			
+			/* ACT: invoca il costruttore con un numero di forme non valido (> 10) */
 			new GruppoDiForme(25);
-			fail("Doveva essere lanciata IllegalArgumentException in quanto il numero di forme è superiore a 10");
+			
+			/* ASSERT: il lancio dell'eccezione attesa non è avvenuto e il test fallisce: si restituisce un avviso */
+			fail("TEST FALLITO: doveva essere lanciata IllegalArgumentException in quanto il numero di forme è superiore a 10");
 			
 		} catch (IllegalArgumentException e) {
 			
+			/* ASSERT: il lancio dell'eccezione attesa è avvenuto: si verifica che venga restituito il relativo messaggio */
 			assertEquals("Il raggruppamento non può avere più di 10 forme!", e.getMessage());
 			
 		}
@@ -106,12 +110,14 @@ public class GruppoDiFormeTest {
 	
 	/* Verifica che il costruttore accetti un numero di forme <= 10 senza eccezioni */
 	@Test
-	public void testCostruttoreFinoADieciForme() {
+	public void testCostruttore_FinoADieciForme() {
 		
+		/* ARRANGE: inizializza il flag */
 		boolean eccezioneLanciata = false;
 		
 		try {
 			
+			/* ACT: invoca il costruttore con un numero di forme valido (<= 10) */
 			new GruppoDiForme(5);
 			
 		} catch (IllegalArgumentException e) {
@@ -120,9 +126,45 @@ public class GruppoDiFormeTest {
 			
 		}
 		
+		/* ASSERT: verifica che non sia stata lanciata alcuna eccezione, altrimenti si restituisce un avviso */
 		assertFalse("È stata lanciata IllegalArgumentException ma il numero di forme è inferiore o uguale a 10",
 	               eccezioneLanciata);
 		
 	}
 	
+	/* Verifica che aggiungiForma lanci IllegalStateException se il gruppo è pieno */
+	@Test
+	public void testAggiungiForma_OltreCapienza() {
+		
+		/* ARRANGE: g1 ha capienza 2 ed è già pieno (contiene r1 e c1); tutti e tre sono stati inizializzati nel setUp() */
+		try {
+			
+			/* ACT: prova ad aggiungere una terza forma */
+			this.g1.aggiungiForma(c2);
+			
+			/* ASSERT: il lancio dell'eccezione attesa non è avvenuto e il test fallisce: si restituisce un avviso */
+			fail("TEST FALLITO: Doveva essere lanciata IllegalStateException perché il gruppo è pieno");
+			
+		} catch (IllegalStateException e) {
+			
+			/* ASSERT: il lancio dell'eccezione attesa è avvenuto: si verifica che venga restituito il relativo messaggio */
+			assertEquals("Raggruppamento pieno: capienza massima raggiunta", e.getMessage());
+			
+		}
+	}
+	
+	/* Verifica che toString() di GruppoDiForme produca la stringa attesa per il gruppo considerato */
+	@Test
+	public void testToString_GruppoSemplice() {
+		
+		/* ARRANGE: g1 contiene r1 e c1, già inizializzati nel setUp(); qui si inizializza la stringa attesa */
+		String atteso =
+			"gruppo di forme: numero=2" +
+			"\n forma1: rettangolo: vertice=(1,1), larghezza=5, altezza=7, colore=rosso" +
+			"\n forma2: cerchio: centro=(-1,-3), raggio=4, colore=blu";
+		
+		/* ACT + ASSERT: invoca il toString() e verifica che la stringa prodotta coincida con la stringa attesa */
+		assertEquals(atteso, this.g1.toString());
+	}
+
 }
