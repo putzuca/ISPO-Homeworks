@@ -1,13 +1,15 @@
 package precipitazioni;
 
-public class VisualizzatoreMatrice {
+public class VisualizzatoreMatrice implements Visualizzatore {
 
 	private Precipitazioni precipitazioni;
 
+	@Override
 	public void setPrecipitazioni (Precipitazioni p) {
 		precipitazioni = p;
 	}
 
+	@Override
 	public void aggiornaSchermata(int passo) {
 		System.out.println("Passo " + passo);
 		for (int i=0; i<precipitazioni.getCartaPrecipitazioni().length; i++) {
