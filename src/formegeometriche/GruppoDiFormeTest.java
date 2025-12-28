@@ -166,5 +166,31 @@ public class GruppoDiFormeTest {
 		/* ACT + ASSERT: invoca il toString() e verifica che la stringa prodotta coincida con la stringa attesa */
 		assertEquals(atteso, this.g1.toString());
 	}
+	
+	/* Verifica che la traslazione di un gruppo di forme registrato in una variabile
+	 * di tipo Forma produca il risultato atteso sui suoi componenti */
+	@Test
+	public void testTrasla_Forma() {
+		
+		assertEquals(1, this.r1.getVertice().getX());	// ASSERT: verifica lo stato iniziale
+		assertEquals(1, this.r1.getVertice().getY());	//		   del gruppo di gruppi	  
+		assertEquals(-1, this.c1.getCentro().getX());
+		assertEquals(-3, this.c1.getCentro().getY());
+		assertEquals(-1, this.c2.getCentro().getX());
+		assertEquals(2, this.c2.getCentro().getY());
+		
+		// Uso uniforme tramite Component
+		Forma f = g2;
+		
+		f.trasla(3, 2);         // delega ricorsiva ai componenti
+		
+		assertEquals(4, this.r1.getVertice().getX());	// ASSERT: verifica che il gruppo semplice e il cerchio
+		assertEquals(3, this.r1.getVertice().getY());	//		   contenuti nel gruppo siano stati traslati
+		assertEquals(2, this.c1.getCentro().getX());
+		assertEquals(-1, this.c1.getCentro().getY());
+		assertEquals(2, this.c2.getCentro().getX());
+		assertEquals(4, this.c2.getCentro().getY());
+		
+	}
 
 }

@@ -85,8 +85,7 @@ public class Precipitazioni {
 	/**
      * Aggiorna i valori delle precipitazioni nella matrice.
      *
-     * @param istanteTemporale parametro attualmente non usato: potrebbe servire
-     *                         in estensioni future (es. formule dipendenti dal tempo).
+     * @param istanteTemporale istante al quale avviene l'aggiornamento
      */
 	private void calcolaPrecipitazioni(int istanteTemporale) {
 		
