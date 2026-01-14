@@ -26,10 +26,14 @@ public class Battlefield {
 
 	public void addWalker(Walker w) {
 		// (vedi DOMANDA 1)
+		this.posizione2walker.put(new Position
+				(this.random.nextInt(), this.random.nextInt()), w);
 	}
 
 	public void addChaser(Chaser c) {
 		// (vedi DOMANDA 1)
+		this.posizione2chaser.put(new Position
+				(this.random.nextInt(), this.random.nextInt()), c);
 	}
 
 	public Walker getWalker(Position p) {

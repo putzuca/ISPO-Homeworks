@@ -25,5 +25,14 @@ public class Position {
 	public String toString() {
 		return this.x+"-"+this.y;
 	}
+	
+	public int hashCode() {
+		return this.x + this.y;
+	}
+	
+	public boolean equals(Object o) {
+		Position p = (Position) o;
+		return this.x == p.getX() && this.y == p.getY();
+	}
 
 }
