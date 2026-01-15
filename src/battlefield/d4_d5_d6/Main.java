@@ -1,6 +1,5 @@
 package battlefield.d4_d5_d6;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
